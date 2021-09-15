@@ -1,5 +1,11 @@
 const assertArraysEqual = (arrA, arrB) => {
   
+  let isEqual = eqArrays(arrA, arrB);
+  
+  return (isEqual ? console.log(`✅✅✅Assertion Passed: ${arrA} === ${arrB}`) : console.log(`🛑🛑🛑Assertion Failed: ${arrA} !== ${arrB}`));
+};
+
+const eqArrays = (arrA, arrB) => {
   let isEqual = true;
   if (arrA.length !== arrB.length) {
     isEqual = false;
@@ -9,7 +15,7 @@ const assertArraysEqual = (arrA, arrB) => {
       isEqual = false;
     }
   }
-  return (isEqual ? console.log(`✅✅✅Assertion Passed: ${arrA} === ${arrB}`) : console.log(`🛑🛑🛑Assertion Failed: ${arrA} !== ${arrB}`));
+  return isEqual;
 };
 
 assertArraysEqual([1, 2, 3], [1, 2, 3]);
