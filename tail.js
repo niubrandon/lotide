@@ -9,7 +9,7 @@ const tail = function(arr) {
   }
 };
 
-const assertEqual = function(actual, expected) {
+const assertArraysEqual = function(actual, expected) {
   if (actual === expected) {
   // console.log("✅✅✅Assertion Passed: " + actual + " === " + expected);
     console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);
@@ -19,17 +19,17 @@ const assertEqual = function(actual, expected) {
   }
 };
 const result = tail([1, 2, 3]);
-assertEqual(result.length, 2);
-assertEqual(result[0], 2);
-assertEqual(result[1], 3);
+assertArraysEqual(result.length, 2);
+assertArraysEqual(result[0], 2);
+assertArraysEqual(result[1], 3);
 
 const words = tail(["Hello", "Brandon", "Jason"]);
-assertEqual(words.length, 3);
-assertEqual(words[0], "Brandon");
-assertEqual(words[1], "Daisy");
+assertArraysEqual(words.length, 3);
+assertArraysEqual(words[0], "Brandon");
+assertArraysEqual(words[1], "Daisy");
 
 const emptyArray = tail([]);
-assertEqual(emptyArray.length, 0);
+assertArraysEqual(emptyArray.length, 0);
 
 const singleElementArray = tail([1]);
-assertEqual(singleElementArray.length, 0);
+assertArraysEqual(singleElementArray.length, 0);
