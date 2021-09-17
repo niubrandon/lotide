@@ -20,6 +20,7 @@ const findKey = (object, callback) => {
   return undefined;
 };
 
+
 findKey({
   "Blue Hill": { stars: 1 },
   "Akaleri":   { stars: 3 },
