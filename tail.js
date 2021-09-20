@@ -1,5 +1,5 @@
 const tail = function(arr) {
-  if (arr === []) {
+  if (arr.length === 0) {
     return [];
   } else if (arr.length === 1) {
     return [];
