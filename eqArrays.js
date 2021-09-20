@@ -1,12 +1,4 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-  // console.log("✅✅✅Assertion Passed: " + actual + " === " + expected);
-    console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);
-  } else {
-  // console.log("🛑🛑🛑Assertion Failed: " + actual + " !== " + expected);
-    console.log(`🛑🛑🛑Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
+const assertEqual = require('./assertEqual');
 
 const eqArrays = (arrA, arrB) => {
   let isEqual = true;
@@ -21,7 +13,7 @@ const eqArrays = (arrA, arrB) => {
   // console.log("looping thourgh", i , arrA[i], arrB[i]);
     if (Array.isArray(arrA[i]) && Array.isArray(arrB[i])) {
     //recursive call
-      console.log("comparing two arrays", arrA[i], arrB[i]);
+    // console.log("comparing two arrays", arrA[i], arrB[i]);
       isEqual = eqArrays(arrA[i], arrB[i]);
 
     } else if ((!Array.isArray(arrA[i]) && Array.isArray(arrB[i])) || (Array.isArray(arrA[i]) && !Array.isArray(arrB[i]))) {
@@ -38,20 +30,20 @@ const eqArrays = (arrA, arrB) => {
   return isEqual;
 };
 
-eqArrays([[2, 3], [4]], [[2, 3], [4]]); // => true
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true); 
-eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]); // => false
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false);
- 
-eqArrays([[2, 3], [4]], [[2, 3], 4]); // => false
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false);
- 
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-assertEqual(eqArrays([], []), true);
-assertEqual(eqArrays([1, 2, 3], [1, 2]), false);
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-assertEqual(eqArrays([0], [1]), false);
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
-assertEqual(eqArrays(["hi", 2, 3], ["hi", 2, 3]), true);
-assertEqual(eqArrays([1, 2, "hi"], [1, 2, 3]), false);
+
+/* const eqArrays = (arrA, arrB) => {
+  let isEqual = true;
+  if (arrA.length !== arrB.length) {
+    isEqual = false;
+  }
+  for (let i = 0; i < arrA.length; i++) {
+    if (arrA[i] !== arrB[i]) {
+      isEqual = false;
+    }
+  }
+  return isEqual;
+}; */
+
+
+module.exports = eqArrays;
  
