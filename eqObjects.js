@@ -1,42 +1,4 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-  // console.log("✅✅✅Assertion Passed: " + actual + " === " + expected);
-    console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);
-  } else {
-  // console.log("🛑🛑🛑Assertion Failed: " + actual + " !== " + expected);
-    console.log(`🛑🛑🛑Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
-
-const eqArrays = (arrA, arrB) => {
-  let isEqual = true;
-  //first, check if both array has same length
-  if (arrA.length !== arrB.length) {
-  // console.log("two array has different length", arrA, arrB);
-    return isEqual = false;
-  }
-  //loop throught each element
-  for (let i = 0; i < arrA.length; i++) {
-  //check if element is array
-  // console.log("looping thourgh", i , arrA[i], arrB[i]);
-    if (Array.isArray(arrA[i]) && Array.isArray(arrB[i])) {
-    //recursive call
-      console.log("comparing two arrays", arrA[i], arrB[i]);
-      isEqual = eqArrays(arrA[i], arrB[i]);
-
-    } else if ((!Array.isArray(arrA[i]) && Array.isArray(arrB[i])) || (Array.isArray(arrA[i]) && !Array.isArray(arrB[i]))) {
-    // console.log("one of them is not array", arrA[i], arrB[i]);
-      return isEqual = false;
-      
-    } else {
-      if (arrA[i] !== arrB[i]) {
-      // console.log("two value are not same", arrA[i], arrB[i]);
-        return isEqual = false;
-      }
-    }
-  }
-  return isEqual;
-};
+const eqArrays = require('./eqArrays');
 
 const eqObjects = function(object1, object2) {
   let result = true;
@@ -73,28 +35,4 @@ const eqObjects = function(object1, object2) {
 
 
 
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-//eqObjects(ab, ba); // => true
-
-const abc = { a: "1", b: "2", c: "3" };
-//eqObjects(ab, abc); // => false
-assertEqual(eqObjects(ab, ba), true);
-assertEqual(eqObjects(ab, abc), false);
-
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-eqObjects(cd, dc); // => true
-assertEqual(eqObjects(cd, dc), true);
-
-const cd2 = { c: "1", d: ["2", 3, 4] };
-eqObjects(cd, cd2); // => false
-assertEqual(eqObjects(cd, cd2), false);
-
-eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => true
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true);
-
-eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => false
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false);
-eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }); // => false
-assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false);
+module.exports = eqObjects;

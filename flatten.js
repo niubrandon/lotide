@@ -13,5 +13,5 @@ const flatten = (arr, res = []) => {
   return res;
 //
 };
-console.log(flatten([1, 2, [3, 4], 5, [6]]));
-console.log(flatten([1, 2, [3, [8, 9]], 5, [6, [10, 12]]]));
+
+module.exports = flatten;
